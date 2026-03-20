@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0205)https://c48kjb3tyjd39rhh.canvacode.com/codelet/eyJhbGciOiJIUzI1NiJ9.eyJjIjoiYzQ4a2piM3R5amQzOXJoaCIsImV4cCI6MTc3NDAxOTM5OCwiZGVwIjoiREFIRVktVlJTbk0ifQ.BjjheK7qPgA08ZmdcUG6Ohr7zJyXYbU6jY_JEBQQFzU/index.html -->
+<html lang="id" class="h-full"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buku Tamu Reservasi</title>
+  <script src="./3.4.17"></script>
+  <script src="./lucide.min.js.download"></script>
+  <script src="./element_sdk.js.download"></script>
+  <script src="./data_sdk.js.download"></script>
+  <link href="./css2" rel="stylesheet">
+  <style>
+  @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes borderDraw { from { stroke-dashoffset: 400; } to { stroke-dashoffset: 0; } }
+  .fade-up { animation: fadeUp .6s ease both; }
+  .delay-1 { animation-delay:.1s } .delay-2 { animation-delay:.2s } .delay-3 { animation-delay:.3s } .delay-4 { animation-delay:.4s }
+  
+  .manga-border { position:relative; }
+  .manga-border::before {
+    content:''; position:absolute; inset:-2px; border:2px solid #1a1a1a; pointer-events:none;
+    clip-path: polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px));
+  }
+
+  .ink-line { height:1px; background: linear-gradient(90deg, transparent, #1a1a1a 20%, #1a1a1a 80%, transparent); }
+
+  .dot-pattern {
+    background-image: radial-gradient(circle, #1a1a1a 0.5px, transparent 0.5px);
+    background-size: 12px 12px; opacity:0.06;
+    position:absolute; inset:0; pointer-events:none;
+  }
+
+  .toast { animation: fadeUp .4s ease both; }
+  .toast-hide { animation: fadeOut .3s ease both; }
+  @keyframes fadeOut { to { opacity:0; transform:translateY(-10px); } }
+
+  input:focus, textarea:focus, select:focus { outline:none; box-shadow: 0 0 0 1.5px #1a1a1a; }
+
+  .ucapan-card { transition: all .2s ease; }
+  .ucapan-card:hover { transform:translateY(-2px); box-shadow: 3px 3px 0 #1a1a1a; }
+
+  /* scrollbar */
+  .ucapan-scroll::-webkit-scrollbar { width:4px; }
+  .ucapan-scroll::-webkit-scrollbar-track { background:transparent; }
+  .ucapan-scroll::-webkit-scrollbar-thumb { background:#999; border-radius:2px; }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+ <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.relative{position:relative}.left-1\/2{left:50%}.top-4{top:1rem}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-10{margin-top:2.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.hidden{display:none}.h-4{height:1rem}.h-full{height:100%}.w-4{width:1rem}.w-48{width:12rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.resize-none{resize:none}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-6{gap:1.5rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.overflow-auto{overflow:auto}.border{border-width:1px}.p-6{padding:1.5rem}.p-4{padding:1rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.tracking-wider{letter-spacing:0.05em}.accent-black{accent-color:#000}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.hover\:tracking-\[\.2em\]:hover{letter-spacing:.2em}.group:hover .group-hover\:underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}@media (min-width: 768px){.md\:p-8{padding:2rem}.md\:py-12{padding-top:3rem;padding-bottom:3rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style></head>
+ <body class="h-full" style="background:transparent;">
+  <div id="app" class="w-full h-full overflow-auto" style="background:transparent;">
+   <div class="max-w-2xl mx-auto px-4 py-8 md:py-12 relative">
+    <div class="dot-pattern"></div><!-- Header -->
+    <header class="text-center mb-8 fade-up relative z-10">
+     <div class="inline-block mb-3">
+      <svg width="60" height="20" viewBox="0 0 60 20" class="mx-auto mb-2" style="opacity:.4"><line x1="0" y1="10" x2="18" y2="10" stroke="#1a1a1a" stroke-width="1"></line> <circle cx="30" cy="10" r="3" fill="none" stroke="#1a1a1a" stroke-width="1"></circle> <line x1="42" y1="10" x2="60" y2="10" stroke="#1a1a1a" stroke-width="1"></line>
+      </svg>
+     </div>
+     <h1 id="el-judul" class="text-4xl md:text-5xl font-bold tracking-tight" style="font-family: &quot;Playfair Display&quot;, &quot;Playfair Display&quot;, serif; color: rgb(26, 26, 26); font-size: 40px;">Reservasi</h1>
+     <h2 id="el-subjudul" class="text-lg md:text-xl mt-1 italic" style="font-family: &quot;Playfair Display&quot;, &quot;Cormorant Garamond&quot;, serif; color: rgb(58, 58, 58); letter-spacing: 0.08em; font-size: 20px;">Buku Tamu</h2>
+     <div class="ink-line w-48 mx-auto mt-4"></div>
+     <p id="el-deskripsi" class="mt-3 text-sm" style="font-family: &quot;Cormorant Garamond&quot;, serif; color: rgb(85, 85, 85); font-size: 14px;">Tinggalkan ucapan dan konfirmasi kehadiran Anda</p>
+    </header><!-- Statistik -->
+    <div class="flex justify-center gap-6 mb-8 fade-up delay-1 relative z-10">
+     <div class="manga-border px-5 py-3 text-center" style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(4px);">
+      <div id="stat-hadir" class="text-2xl font-bold" style="font-family: &quot;Playfair Display&quot;, &quot;Playfair Display&quot;, serif; color: rgb(26, 26, 26);">1</div>
+      <div class="text-xs uppercase tracking-widest mt-1" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#555;">
+       Hadir
+      </div>
+     </div>
+     <div class="manga-border px-5 py-3 text-center" style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(4px);">
+      <div id="stat-tidak" class="text-2xl font-bold" style="font-family: &quot;Playfair Display&quot;, &quot;Playfair Display&quot;, serif; color: rgb(26, 26, 26);">0</div>
+      <div class="text-xs uppercase tracking-widest mt-1" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#555;">
+       Tidak Hadir
+      </div>
+     </div>
+     <div class="manga-border px-5 py-3 text-center" style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(4px);">
+      <div id="stat-total" class="text-2xl font-bold" style="font-family: &quot;Playfair Display&quot;, &quot;Playfair Display&quot;, serif; color: rgb(26, 26, 26);">1</div>
+      <div class="text-xs uppercase tracking-widest mt-1" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#555;">
+       Total
+      </div>
+     </div>
+    </div><!-- Form -->
+    <form id="guestForm" class="manga-border p-6 md:p-8 mb-8 fade-up delay-2 relative z-10" style="background:rgba(255,255,255,.7); backdrop-filter:blur(6px);">
+     <div class="mb-5"><label for="inp-nama" class="block text-xs uppercase tracking-widest mb-2" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#333;">Nama</label> <input type="text" id="inp-nama" required="" placeholder="Masukkan nama Anda" class="w-full px-4 py-2.5 text-sm border" style="font-family:&#39;Cormorant Garamond&#39;,serif; border-color:#ccc; background:rgba(255,255,255,.5); color:#1a1a1a;">
+     </div>
+     <div class="mb-5"><label for="inp-ucapan" class="block text-xs uppercase tracking-widest mb-2" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#333;">Ucapan</label> <textarea id="inp-ucapan" required="" rows="3" placeholder="Tuliskan ucapan Anda..." class="w-full px-4 py-2.5 text-sm border resize-none" style="font-family:&#39;Cormorant Garamond&#39;,serif; border-color:#ccc; background:rgba(255,255,255,.5); color:#1a1a1a;"></textarea>
+     </div>
+     <div class="mb-6"><label class="block text-xs uppercase tracking-widest mb-3" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#333;">Kehadiran</label>
+      <div class="flex gap-6"><label class="flex items-center gap-2 cursor-pointer group"> <input type="radio" name="kehadiran" value="Hadir" checked="" class="accent-black w-4 h-4"> <span class="text-sm group-hover:underline" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#1a1a1a;">Hadir</span> </label> <label class="flex items-center gap-2 cursor-pointer group"> <input type="radio" name="kehadiran" value="Tidak Hadir" class="accent-black w-4 h-4"> <span class="text-sm group-hover:underline" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#1a1a1a;">Tidak Hadir</span> </label>
+      </div>
+     </div><button type="submit" id="btn-kirim" class="w-full py-3 text-sm uppercase tracking-widest transition-all duration-200 hover:tracking-[.2em]" style="font-family: &quot;Playfair Display&quot;, &quot;Cormorant Garamond&quot;, serif; background: rgb(26, 26, 26); color: rgb(245, 245, 240); border: none;"> <span id="btn-text">Kirim Ucapan</span> <span id="btn-loading" class="hidden">Mengirim...</span> </button>
+    </form><!-- Toast -->
+    <div id="toast" class="hidden fixed top-4 left-1/2 -translate-x-1/2 z-50 px-6 py-3 text-sm manga-border" style="font-family:&#39;Cormorant Garamond&#39;,serif; background:#1a1a1a; color:#f5f5f0;"></div><!-- Ucapan List -->
+    <section id="ucapan-section" class="fade-up delay-3 relative z-10">
+     <div class="flex items-center gap-3 mb-4">
+      <div class="ink-line flex-1"></div>
+      <h3 class="text-xs uppercase tracking-widest" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#555;">Ucapan Tamu</h3>
+      <div class="ink-line flex-1"></div>
+     </div>
+     <div id="ucapan-list" class="space-y-3 ucapan-scroll" style="max-height:400px; overflow-y:auto;">
+      <p id="empty-msg" class="text-center text-sm italic py-8 hidden" style="font-family:&#39;Cormorant Garamond&#39;,serif; color:#999;">Belum ada ucapan. Jadilah yang pertama!</p>
+     <div class="ucapan-card manga-border p-4" data-id="SUB_eff0a58580794ef3bfe922777b6eb19d" style="background: rgba(255, 255, 255, 0.6); animation: 0.4s ease 0s 1 normal both running fadeUp;">
+        <div class="flex justify-between items-start mb-2">
+          <span class="uc-nama font-bold text-sm" style="font-family:&#39;Playfair Display&#39;,Playfair Display,serif;color:#1a1a1a">Yogie Aldian</span>
+          <span class="uc-badge text-xs px-2 py-0.5 uppercase tracking-wider" style="font-family:&#39;Cormorant Garamond&#39;,serif;border:1px solid #1a1a1a;color:#1a1a1a">Hadir</span>
+        </div>
+        <p class="uc-text text-sm italic leading-relaxed" style="font-family:&#39;Cormorant Garamond&#39;,serif;color:#555555">"Selamat yaaa"</p>
+      </div></div>
+    </section><!-- Footer ornament -->
+    <div class="text-center mt-10 fade-up delay-4 relative z-10">
+     <svg width="80" height="20" viewBox="0 0 80 20" class="mx-auto" style="opacity:.3"><line x1="0" y1="10" x2="25" y2="10" stroke="#1a1a1a" stroke-width="1"></line> <path d="M32 10 L37 5 L42 10 L37 15 Z" fill="none" stroke="#1a1a1a" stroke-width="1"></path> <line x1="49" y1="10" x2="80" y2="10" stroke="#1a1a1a" stroke-width="1"></line>
+     </svg>
+    </div>
+   </div>
+  </div>
+  <script>
+// State
+let allData = [];
+const defaultConfig = {
+  judul_utama: 'Reservasi',
+  subjudul: 'Buku Tamu',
+  deskripsi: 'Tinggalkan ucapan dan konfirmasi kehadiran Anda',
+  tombol_kirim: 'Kirim Ucapan',
+  background_color: 'transparent',
+  surface_color: '#ffffff',
+  text_color: '#1a1a1a',
+  accent_color: '#3a3a3a',
+  muted_color: '#555555',
+  font_family: 'Playfair Display',
+  font_size: 16
+};
+
+// Element SDK
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => {
+    const c = key => config[key] || defaultConfig[key];
+    document.getElementById('el-judul').textContent = c('judul_utama');
+    document.getElementById('el-subjudul').textContent = c('subjudul');
+    document.getElementById('el-deskripsi').textContent = c('deskripsi');
+    document.getElementById('btn-text').textContent = c('tombol_kirim');
+
+    const tc = c('text_color');
+    const ac = c('accent_color');
+    const mc = c('muted_color');
+    const sc = c('surface_color');
+    const font = c('font_family');
+    const baseSize = c('font_size');
+
+    document.getElementById('el-judul').style.color = tc;
+    document.getElementById('el-judul').style.fontFamily = `${font}, Playfair Display, serif`;
+    document.getElementById('el-judul').style.fontSize = `${baseSize * 2.5}px`;
+    document.getElementById('el-subjudul').style.color = ac;
+    document.getElementById('el-subjudul').style.fontFamily = `${font}, Cormorant Garamond, serif`;
+    document.getElementById('el-subjudul').style.fontSize = `${baseSize * 1.25}px`;
+    document.getElementById('el-deskripsi').style.color = mc;
+    document.getElementById('el-deskripsi').style.fontSize = `${baseSize * 0.875}px`;
+
+    document.querySelectorAll('.manga-border').forEach(el => {
+      if (el.id !== 'toast') el.style.background = `${sc}b3`;
+    });
+
+    document.querySelectorAll('#stat-hadir, #stat-tidak, #stat-total').forEach(el => {
+      el.style.color = tc;
+      el.style.fontFamily = `${font}, Playfair Display, serif`;
+    });
+
+    const btn = document.getElementById('btn-kirim');
+    btn.style.background = tc;
+    btn.style.fontFamily = `${font}, Cormorant Garamond, serif`;
+
+    renderList();
+  },
+  mapToCapabilities: (config) => {
+    const c = key => config[key] || defaultConfig[key];
+    const mut = (key) => ({
+      get: () => c(key),
+      set: (v) => { config[key] = v; window.elementSdk.setConfig({ [key]: v }); }
+    });
+    return {
+      recolorables: [mut('surface_color'), mut('text_color'), mut('accent_color'), mut('muted_color')],
+      borderables: [],
+      fontEditable: mut('font_family'),
+      fontSizeable: mut('font_size')
+    };
+  },
+  mapToEditPanelValues: (config) => new Map([
+    ['judul_utama', config.judul_utama || defaultConfig.judul_utama],
+    ['subjudul', config.subjudul || defaultConfig.subjudul],
+    ['deskripsi', config.deskripsi || defaultConfig.deskripsi],
+    ['tombol_kirim', config.tombol_kirim || defaultConfig.tombol_kirim]
+  ])
+});
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.remove('hidden','toast-hide');
+  t.classList.add('toast');
+  setTimeout(() => { t.classList.add('toast-hide'); setTimeout(() => t.classList.add('hidden'), 300); }, 2500);
+}
+
+// Render
+function renderList() {
+  const container = document.getElementById('ucapan-list');
+  const empty = document.getElementById('empty-msg');
+
+  if (allData.length === 0) {
+    empty.classList.remove('hidden');
+    container.querySelectorAll('.ucapan-card').forEach(el => el.remove());
+    return;
+  }
+  empty.classList.add('hidden');
+
+  const sorted = [...allData].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  const existing = new Map([...container.querySelectorAll('.ucapan-card')].map(el => [el.dataset.id, el]));
+
+  const tc = window.elementSdk.config?.text_color || defaultConfig.text_color;
+  const mc = window.elementSdk.config?.muted_color || defaultConfig.muted_color;
+  const sc = window.elementSdk.config?.surface_color || defaultConfig.surface_color;
+  const font = window.elementSdk.config?.font_family || defaultConfig.font_family;
+
+  sorted.forEach((item, i) => {
+    const id = item.__backendId;
+    let card = existing.get(id);
+    if (card) {
+      card.querySelector('.uc-nama').textContent = item.nama;
+      card.querySelector('.uc-text').textContent = item.ucapan;
+      card.querySelector('.uc-badge').textContent = item.kehadiran;
+      existing.delete(id);
+    } else {
+      card = document.createElement('div');
+      card.className = 'ucapan-card manga-border p-4';
+      card.dataset.id = id;
+      card.style.background = `${sc}99`;
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-2">
+          <span class="uc-nama font-bold text-sm" style="font-family:'${font}',Playfair Display,serif;color:${tc}">${item.nama}</span>
+          <span class="uc-badge text-xs px-2 py-0.5 uppercase tracking-wider" style="font-family:'Cormorant Garamond',serif;border:1px solid ${tc};color:${tc}">${item.kehadiran}</span>
+        </div>
+        <p class="uc-text text-sm italic leading-relaxed" style="font-family:'Cormorant Garamond',serif;color:${mc}">"${item.ucapan}"</p>
+      `;
+      card.style.animation = `fadeUp .4s ease ${i * .05}s both`;
+      container.appendChild(card);
+    }
+  });
+
+  existing.forEach(el => el.remove());
+
+  // Reorder
+  sorted.forEach(item => {
+    const card = container.querySelector(`[data-id="${item.__backendId}"]`);
+    if (card) container.appendChild(card);
+  });
+}
+
+function updateStats() {
+  const hadir = allData.filter(d => d.kehadiran === 'Hadir').length;
+  const tidak = allData.filter(d => d.kehadiran === 'Tidak Hadir').length;
+  document.getElementById('stat-hadir').textContent = hadir;
+  document.getElementById('stat-tidak').textContent = tidak;
+  document.getElementById('stat-total').textContent = allData.length;
+}
+
+// Data SDK
+window.dataSdk.init({
+  onDataChanged(data) {
+    allData = data;
+    updateStats();
+    renderList();
+  }
+});
+
+// Form
+document.getElementById('guestForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (allData.length >= 999) { showToast('Batas maksimal 999 ucapan tercapai.'); return; }
+
+  const nama = document.getElementById('inp-nama').value.trim();
+  const ucapan = document.getElementById('inp-ucapan').value.trim();
+  const kehadiran = document.querySelector('input[name="kehadiran"]:checked').value;
+  if (!nama || !ucapan) return;
+
+  const btn = document.getElementById('btn-kirim');
+  const btnT = document.getElementById('btn-text');
+  const btnL = document.getElementById('btn-loading');
+  btn.disabled = true; btnT.classList.add('hidden'); btnL.classList.remove('hidden');
+
+  const result = await window.dataSdk.create({ nama, ucapan, kehadiran, timestamp: new Date().toISOString() });
+
+  btn.disabled = false; btnT.classList.remove('hidden'); btnL.classList.add('hidden');
+
+  if (result.isOk) {
+    showToast('Terima kasih atas ucapan Anda! ✦');
+    e.target.reset();
+  } else {
+    showToast('Gagal mengirim. Coba lagi.');
+  }
+});
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ded6b82062fa396',t:'MTc3MzkzMzE5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe>
+</body></html>
