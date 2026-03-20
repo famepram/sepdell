@@ -10,39 +10,6 @@
     />
     <style>
       @font-face {
-        font-family: "Sloop Script Pro";
-        src: url("https://septa-della.my.canva.site/_assets/fonts/d9b12cc7357ddc840198d7567b0d6a1b.woff2")
-            format("woff2"),
-          url("https://septa-della.my.canva.site/_assets/fonts/6731a0511d323007257ce8fc9b2beb62.woff")
-            format("woff");
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Frys Baskerville";
-        src: url("https://septa-della.my.canva.site/_assets/fonts/2cafc1495b7ec51ed071be2c599ec0ce.woff2")
-            format("woff2"),
-          url("https://septa-della.my.canva.site/_assets/fonts/2e394bd1133283d5f0ee266cad698bb5.woff")
-            format("woff");
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Libre Baskerville Ref";
-        src: url("https://septa-della.my.canva.site/_assets/fonts/5ff8dda107f94f00944ba9a5d6988867.woff2")
-            format("woff2"),
-          url("https://septa-della.my.canva.site/_assets/fonts/3ecc65cbe74a4874b80b0b2791969a72.woff")
-            format("woff");
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Open Sans Ref";
-        src: url("assets/fonts/awesome-lathusca.woff2");
-        font-display: swap;
-      }
-
-      @font-face {
         font-family: "Awesome Lathusca";
         src: url("assets/fonts/awesome-lathusca.woff2") format("woff2"),
           url("assets/fonts/awesome-lathusca.woff") format("woff");
@@ -57,21 +24,26 @@
       }
 
       :root {
-        --page-width: 400px;
-        --text: #000;
-        --muted: #3f3f3f;
-        --line: rgba(0, 0, 0, 0.14);
+        --paper: #ffffff;
+        --ink: #111111;
+        --muted: #4e4e4e;
+        --line: rgba(17, 17, 17, 0.16);
+        --panel: #f7f6f2;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        background: #fff;
-        color: var(--text);
-        font-family: "Open Sans", Arial, sans-serif;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
       }
 
       img {
@@ -85,52 +57,76 @@
       }
 
       .page {
-        width: min(100%, var(--page-width));
+        width: min(1080px, calc(100% - 48px));
         margin: 0 auto;
-        background: #fff;
+        background: transparent;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(320px, 1fr));
+        gap: 28px;
+        padding: 28px 0 40px;
+        align-items: start;
       }
 
       .section {
         position: relative;
         overflow: hidden;
-        padding: 18px 18px 26px;
-        text-align: center;
-      }
-
-      .hero-section {
-        padding: 10px 18px 10px;
-        min-height: 1110px;
-      }
-
-      .hero-title-script,
-      .section-script {
+        width: 100%;
         margin: 0;
-        font-family: "Sloop Script Pro", "Times New Roman", serif;
+        padding: 18px clamp(18px, 4vw, 48px) 28px;
+        text-align: center;
+        background: var(--paper);
+      }
+
+      .script-title {
+        margin: 0;
+        font-family: "Symphony", "Times New Roman", serif;
         font-size: 72px;
-        line-height: 0.95;
+        line-height: 0.94;
+        font-weight: 400;
       }
 
-      .hero-subtitle,
-      .section-subtitle {
-        margin: -6px 0 0;
-        font-family: "Frys Baskerville", "Times New Roman", serif;
-        font-size: 28px;
-        letter-spacing: -0.05em;
-        text-transform: uppercase;
-      }
-
-      .hero-date,
-      .event-date {
-        margin: 8px 0 0;
+      .caps-subtitle {
+        margin: -20px 0 0;
         font-family: "Awesome Lathusca", Georgia, serif;
-        font-size: 21px;
+        font-size: 30px;
+        letter-spacing: 0.02em;
+      }
+
+      .date-text {
+        margin: 4px 0 0;
+        font-family: "Awesome Lathusca", Georgia, serif;
+        font-size: 16px;
         letter-spacing: 0.03em;
+      }
+
+      .hero-names {
+        margin: 8px 0 0;
+        font-size: 30px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: 1.05;
+      }
+
+      .copy {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .hero {
+        padding-top: 14px;
+      }
+
+      .hero .caps-subtitle {
+        margin-top: -8px;
+        font-size: 33px;
       }
 
       .hero-collage {
         position: relative;
-        width: 326px;
-        margin: -4px auto 0;
+        width: min(380px, 100%);
+        margin: 2px auto 0;
       }
 
       .hero-main {
@@ -141,288 +137,474 @@
         position: absolute;
         left: 8px;
         bottom: 18px;
-        width: 84px;
+        width: 78px;
       }
 
       .hero-right {
         position: absolute;
-        right: 10px;
-        top: 166px;
-        width: 85px;
+        right: 8px;
+        top: 172px;
+        width: 78px;
       }
 
-      .pair-section {
+      .pair {
         padding-top: 0;
-        padding-bottom: 24px;
       }
 
-      .section-script {
-        font-size: 82px;
+      .pair-frame {
+        position: relative;
+        width: min(100%, 400px);
+        margin: 0 auto;
+        padding: 96px 20px 70px;
       }
 
-      .section-subtitle {
-        font-family: "Awesome Lathusca", Georgia, serif;
-        font-size: 34px;
-        letter-spacing: 0.02em;
+      .pair-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/images/frame-bride-groom.png") center / 100%
+          100% no-repeat;
+        pointer-events: none;
+      }
+
+      .pair-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .pair .script-title {
+        font-size: 52px;
+      }
+
+      .pair .caps-subtitle {
+        font-size: 28px;
+      }
+
+      .pair .script-title,
+      .pair .caps-subtitle {
+        position: relative;
+        z-index: 1;
       }
 
       .invite-copy {
-        width: 86%;
-        margin: 14px auto 24px;
-        font-family: "Libre Baskerville Ref", Georgia, serif;
-        font-size: 14px;
-        line-height: 1.25;
+        width: 85%;
+        margin: 0px auto 16px;
       }
 
       .profiles {
         display: grid;
-        gap: 14px;
+        gap: 16px;
       }
 
-      .profile {
+      .profile-card {
         display: grid;
-        gap: 6px;
+        gap: 8px;
         justify-items: center;
       }
 
-      .profile img {
-        width: 236px;
+      .profile-card img {
+        width: 100px;
       }
 
       .profile-name {
-        margin: 2px 0 0;
-        font-family: "Playfair Display", Georgia, serif;
-        font-size: 28px;
+        margin: 0;
+        font-size: 24px;
         font-style: italic;
         font-weight: 700;
         line-height: 1.05;
       }
 
       .profile-note {
-        width: 86%;
-        margin: 0;
-        font-family: "Playfair Display", Georgia, serif;
-        font-size: 13px;
-        line-height: 1.45;
-        letter-spacing: 0.04em;
+        width: 84%;
       }
 
-      .and-mark {
-        margin: 2px 0;
-        font-family: "Playfair Display", Georgia, serif;
-        font-size: 38px;
+      .ampersand {
+        margin: 0;
+        font-size: 42px;
         font-style: italic;
-        font-weight: 700;
         line-height: 1;
       }
 
-      .quote-section {
-        padding-top: 24px;
-        padding-bottom: 24px;
-      }
-
-      .ornament-top,
-      .ornament-bottom {
+      .ornament {
         width: 100%;
       }
 
-      .quote-text {
-        width: 90%;
-        margin: 18px auto;
-        font-family: "Libre Baskerville Ref", Georgia, serif;
-        font-size: 14px;
+      .quote-copy {
+        width: 88%;
+        margin: 16px auto;
+        color: var(--ink);
+        font-size: 12px;
         font-weight: 700;
-        line-height: 1.42;
+        line-height: 1.55;
       }
 
-      .quote-text span {
+      .quote-copy span {
         display: block;
       }
 
-      .event-section {
-        padding-top: 18px;
+      .quote-section {
+        padding-left: 120px;
+        padding-right: 120px;
+      }
+
+      .event {
+        padding-top: 22px;
+      }
+
+      .event-frame {
+        position: relative;
+        width: min(100%, 400px);
+        margin: 0 auto;
+        padding: 80px 20px 70px;
+      }
+
+      .event-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/images/frame-bride-groom.png") center / 100%
+          100% no-repeat;
+        pointer-events: none;
       }
 
       .event-shell {
+        position: relative;
+        z-index: 1;
         display: grid;
-        gap: 12px;
+        gap: 14px;
         justify-items: center;
       }
 
-      .event-visual {
-        width: 236px;
+      .event .script-title {
+        margin: 0;
+        font-family: "Symphony", "Times New Roman", serif;
+        font-size: 56px;
+        line-height: 0.94;
+        font-weight: 400;
       }
 
-      .location-copy {
-        width: 78%;
-        margin: 0 auto;
-        font-family: "Open Sans", Arial, sans-serif;
+      .event .caps-subtitle {
+        margin: -32px 0 0;
+        font-family: "Awesome Lathusca", Georgia, serif;
+        font-size: 30px;
+        letter-spacing: 0.02em;
+      }
+
+      .event .date-text {
+        margin: -16px 0 0;
+        font-family: "Awesome Lathusca", Georgia, serif;
+        font-size: 16px;
+        letter-spacing: 0.03em;
+        padding: 2px 16px;
+        border: solid 1px;
+      }
+
+      .event-art {
+        width: 225px;
+      }
+
+      .event-copy {
+        width: 80%;
+        color: var(--muted);
         font-size: 12px;
-        line-height: 1.35;
+        line-height: 1.45;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
 
-      .map-card {
-        width: 270px;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        background: #f5f1eb;
-      }
-
-      .map-card iframe {
-        display: block;
+      .event-grid {
+        display: grid;
+        gap: 10px;
         width: 100%;
-        height: 210px;
+      }
+
+      .event-card,
+      .gift-card,
+      .reservation-card {
         border: 0;
+        border-radius: 0;
+        background: #ffffff;
+      }
+
+      .event-card {
+        width: min(286px, 100%);
+        padding: 18px 18px 16px;
+      }
+
+      .event-card-title {
+        margin: 0;
+        font-size: 28px;
+        font-style: italic;
+      }
+
+      .event-time {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .location-box {
+        width: min(286px, 100%);
+        padding: 16px;
+        text-align: center;
+      }
+
+      .location-label {
+        margin: 0 0 6px;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
       }
 
       .cta-link {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 118px;
-        padding: 10px 20px;
+        min-width: 144px;
+        padding: 10px 22px;
         border-radius: 999px;
-        background: #000;
-        color: #fff;
-        font-family: "Libre Baskerville Ref", Georgia, serif;
+        background: #111111;
+        color: #ffffff;
         font-size: 12px;
         font-weight: 700;
-        letter-spacing: -0.01em;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
       }
 
-      .gift-section {
-        padding-top: 20px;
-        min-height: 1110px;
+      .gift {
+        padding-top: 18px;
+      }
+
+      .gift-outer-frame {
+        position: relative;
+        width: min(100%, 400px);
+        margin: 0 auto;
+        padding: 114px 20px 100px;
+      }
+
+      .gift-outer-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/images/frame-bride-groom.png") center / 100%
+          100% no-repeat;
+        pointer-events: none;
       }
 
       .gift-shell {
         position: relative;
-        min-height: 990px;
-      }
-
-      .gift-backdrop {
-        position: absolute;
-        inset: 88px 10px 6px 14px;
-        width: calc(100% - 24px);
-        pointer-events: none;
-        opacity: 1;
-      }
-
-      .gift-flower-top,
-      .gift-flower-bottom {
-        position: absolute;
-        left: 50%;
-        width: 84px;
-        transform: translateX(-50%);
         z-index: 1;
+        display: grid;
+        gap: 16px;
       }
 
-      .gift-flower-top {
-        top: 392px;
+      .gift .script-title {
+        font-size: 60px;
       }
 
-      .gift-flower-bottom {
-        top: 540px;
+      .gift .caps-subtitle {
+        margin: -36px 0 0;
+        font-family: "Awesome Lathusca", Georgia, serif;
+        font-size: 30px;
+        letter-spacing: 0.02em;
       }
 
       .gift-note {
-        position: relative;
-        z-index: 2;
-        width: 78%;
-        margin: 168px auto 240px;
-        font-family: "Libre Baskerville Ref", Georgia, serif;
-        font-size: 12px;
-        line-height: 1.35;
+        width: 82%;
+        margin: -16px auto 0;
       }
 
-      .gift-note span {
-        display: block;
+      .gift-backdrop {
+        width: min(335px, 100%);
+        margin: 0 auto;
       }
 
-      .gift-address-title {
-        position: relative;
-        z-index: 2;
+      .gift-stack {
+        width: min(100%, 286px);
+        margin: 0 auto;
+        display: grid;
+        gap: 16px;
+      }
+
+      .gift-card {
+        padding: 16px 0px;
+        background: #ffffff;
+      }
+
+      .gift-card-title {
         margin: 0 0 10px;
-        font-family: "TAN Tangkiwood", "Playfair Display", Georgia, serif;
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
       }
 
       .gift-address {
-        position: relative;
-        z-index: 2;
-        width: 70%;
-        margin: 0 auto 34px;
-        font-family: "Open Sans", Arial, sans-serif;
+        color: var(--muted);
         font-size: 13px;
-        line-height: 1.4;
+        line-height: 1.5;
       }
 
-      .gift-account-name {
-        position: relative;
-        z-index: 2;
-        margin: 44px 0 4px;
-        font-family: "Open Sans", Arial, sans-serif;
-        font-size: 16px;
+      .gift-account-name,
+      .gift-account-number {
+        margin: 0;
+        font-size: 17px;
         font-weight: 700;
       }
 
       .gift-account-number {
-        position: relative;
-        z-index: 2;
-        margin: 0;
-        font-family: "Open Sans", Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 700;
+        letter-spacing: 0.08em;
       }
 
-      .closing-section {
-        padding-top: 20px;
-        padding-bottom: 30px;
+      .gift-qr {
+        width: 100%;
+        border-radius: 18px;
+        padding: 36px 16px;
       }
 
       .closing-note {
         width: 84%;
         margin: 16px auto;
-        font-family: "Playfair Display", Georgia, serif;
-        font-size: 15px;
+        font-size: 16px;
         font-style: italic;
-        line-height: 1.4;
+        line-height: 1.5;
       }
 
-      .reservation-section {
-        padding: 0;
+      .closing-section {
+        padding: 16px 132px;
       }
 
-      .reservation-frame {
+      .reservation {
+        padding-top: 8px;
+      }
+
+      .reservation-card {
         width: 100%;
-        min-height: 618px;
-        border: 0;
-        display: block;
+        padding: 26px 20px;
       }
 
-      @media (min-width: 401px) {
-        body {
-          background: #f4efe7;
+      .reservation-title {
+        margin: 0;
+        font-size: 34px;
+        font-style: italic;
+      }
+
+      .reservation-subtitle {
+        margin: 2px 0 0;
+        font-family: "Awesome Lathusca", Georgia, serif;
+        font-size: 24px;
+      }
+
+      .reservation-copy {
+        width: 88%;
+        margin: 14px auto 20px;
+      }
+
+      .reservation-form {
+        display: grid;
+        gap: 12px;
+        text-align: left;
+      }
+
+      .field-label {
+        display: block;
+        margin: 0 0 6px;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .field-input,
+      .field-textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: #ffffff;
+        padding: 12px 14px;
+        color: var(--ink);
+        font: inherit;
+        font-size: 14px;
+      }
+
+      .field-textarea {
+        min-height: 108px;
+        resize: vertical;
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .radio-option {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      .submit-btn {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        background: #111111;
+        color: #ffffff;
+        padding: 12px 18px;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .reservation-link {
+        margin-top: 6px;
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 400px) {
+        .hero,
+        .gift {
+          min-height: auto;
         }
 
+        .gift-stack {
+          inset: 20px 20px 28px;
+        }
+      }
+
+      @media (max-width: 900px) {
         .page {
-          box-shadow: 0 18px 54px rgba(0, 0, 0, 0.08);
+          width: 100%;
+          grid-template-columns: 1fr;
+          gap: 18px;
+          padding: 0;
+        }
+
+        .section {
+          width: 100%;
+          border-radius: 0;
+          box-shadow: none;
         }
       }
     </style>
   </head>
   <body>
     <main class="page">
-      <section class="section hero-section">
-        <p class="hero-title-script">Wedding</p>
-        <p class="hero-subtitle">Invitation</p>
+      <section class="section hero">
+        <p class="script-title">Wedding</p>
+        <p class="caps-subtitle">Invitation</p>
         <div class="hero-collage">
           <img
             class="hero-main"
             src="assets/images/detail-opening.png"
-            alt="Ilustrasi pembuka undangan"
+            alt="Ilustrasi pasangan pengantin"
           />
           <img
             class="hero-left"
@@ -437,53 +619,57 @@
             aria-hidden="true"
           />
         </div>
-        <p class="hero-date">Sabtu, 28 Maret 2026</p>
+        <p class="hero-names">Septa &amp; Della</p>
+        <p class="date-text">Sabtu, 28 Maret 2026</p>
       </section>
 
-      <section class="section pair-section">
-        <p class="section-script">Bride&amp;</p>
-        <p class="section-subtitle">Groom</p>
-        <p class="invite-copy">
-          Dengan penuh kebahagiaan,<br />
-          kami mengundang Bapak/Ibu/Saudara/i<br />
-          untuk menghadiri acara pernikahan kami:
-        </p>
-
-        <div class="profiles">
-          <article class="profile">
-            <img
-              src="assets/images/bride-reference.png"
-              alt="Potret Dela Sinta"
-            />
-            <p class="profile-name">Dela Sinta</p>
-            <p class="profile-note">
-              Putri ke-7 dari Bapak Eli Suhaeli &amp; Ibu Mimin Maryamah
+      <section class="section pair">
+        <div class="pair-frame">
+          <div class="pair-content">
+            <p class="script-title">Bride&amp;</p>
+            <p class="caps-subtitle">Groom</p>
+            <p class="copy invite-copy">
+              Dengan penuh kebahagiaan, kami mengundang Bapak/Ibu/Saudara/i
+              untuk menghadiri acara pernikahan kami:
             </p>
-          </article>
 
-          <p class="and-mark">&amp;</p>
+            <div class="profiles">
+              <article class="profile-card">
+                <img
+                  src="assets/images/bride-portrait.png"
+                  alt="Potret Dela Sinta"
+                />
+                <p class="profile-name">Dela Sinta</p>
+                <p class="copy profile-note">
+                  Putri ke-7 dari Bapak Eli Suhaeli &amp; Ibu Mimin Maryamah
+                </p>
+              </article>
 
-          <article class="profile">
-            <img
-              src="assets/images/groom-reference.png"
-              alt="Potret Septa Abdi Muhammad"
-            />
-            <p class="profile-name">Septa Abdi Muhammad</p>
-            <p class="profile-note">
-              Putra ke-3 dari Bapak Muhammad Nur (alm)&amp; Ibu Maymunah
-            </p>
-          </article>
+              <p class="ampersand">&amp;</p>
+
+              <article class="profile-card">
+                <img
+                  src="assets/images/groom-portrait.png"
+                  alt="Potret Septa Abdi Muhammad"
+                />
+                <p class="profile-name">Septa Abdi Muhammad</p>
+                <p class="copy profile-note">
+                  Putra ke-3 dari Bapak Muhammad Nur (alm) &amp; Ibu Maymunah
+                </p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="section quote-section">
         <img
-          class="ornament-top"
+          class="ornament"
           src="assets/images/af8786a2983d6510a006e69110f37d17.svg"
           alt=""
           aria-hidden="true"
         />
-        <div class="quote-text">
+        <div class="quote-copy">
           <span>“Dan di antara tanda-tanda kekuasaan-Nya,</span>
           <span>Dia menciptakan pasangan untukmu dari jenismu sendiri</span>
           <span>agar kamu merasa tenteram di sampingnya.”</span>
@@ -491,111 +677,159 @@
           <span>(QS. Ar-Rum: 21)</span>
         </div>
         <img
-          class="ornament-bottom"
-          src="assets/images/ed6876df8b107b8598afa3838b13fabd.svg"
+          class="ornament"
+          src="assets/images/af8786a2983d6510a006e69110f37d17.svg"
           alt=""
           aria-hidden="true"
         />
       </section>
 
-      <section class="section event-section">
-        <div class="event-shell">
-          <p class="section-script">Wedding</p>
-          <p class="section-subtitle">EVENT</p>
-          <p class="event-date">Sabtu, 28 Maret 2026</p>
-          <img
-            class="event-visual"
-            src="assets/images/location-illustration.png"
-            alt="Ilustrasi lokasi acara"
-          />
-          <p class="location-copy">
-            WARUNG BU UTIN, MASJID, Jalan Kampung Kalahang Kadudodol, Cimanuk,
-            Kab. Pandeglang, Banten,
-          </p>
-          <div class="map-card">
-            <iframe
-              title="Peta lokasi acara"
-              src="https://www.google.com/maps?q=place_id:ChIJr2NW8Hg7Qi4RT6Fou2vhxtE&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+      <section class="section event">
+        <div class="event-frame">
+          <div class="event-shell">
+            <p class="script-title">Wedding</p>
+            <p class="caps-subtitle">EVENT</p>
+            <p class="date-text">Sabtu, 28 Maret 2026</p>
+
+            <img
+              class="event-art"
+              src="assets/images/schedule-art.png"
+              alt="Jadwal akad dan resepsi"
+            />
+
+            <div class="event-card location-box">
+              <p class="location-label">Lokasi</p>
+              <p class="copy event-copy">
+                WARUNG BU UTIN, dekat masjid, Jalan Kampung Kalahang
+                Kadudodol, Cimanuk, Kabupaten Pandeglang, Banten.
+              </p>
+            </div>
+
+            <a
+              class="cta-link"
+              href="https://maps.app.goo.gl/166UqreKG3QH8FCP7?g_st=ic"
+              target="_blank"
+              rel="noreferrer"
+              >Lihat Lokasi</a
+            >
           </div>
-          <a
-            class="cta-link"
-            href="https://maps.app.goo.gl/166UqreKG3QH8FCP7?g_st=ic"
-            target="_blank"
-            rel="noreferrer"
-            >Lihat Lokasi</a
-          >
         </div>
       </section>
 
-      <section class="section gift-section">
-        <div class="gift-shell">
-          <p class="section-script">Wedding</p>
-          <p class="section-subtitle">GIFT</p>
-          <img
-            class="gift-backdrop"
-            src="assets/images/9462aa10c356ae5bc19fe1b08743fca4.png"
-            alt=""
-            aria-hidden="true"
-          />
-          <div class="gift-note">
-            <span>Doa dan restu anda merupakan karunia-</span>
-            <span>yang sangat berarti bagi kami,</span>
-            <span>namun jika memberi adalah tanda kasih anda,</span>
-            <span>Anda dapat memberi gift.</span>
+      <section class="section gift">
+        <div class="gift-outer-frame">
+          <div class="gift-shell">
+            <p class="script-title">Wedding</p>
+            <p class="caps-subtitle">GIFT</p>
+            <p class="copy gift-note">
+              Doa dan restu anda merupakan karunia yang sangat berarti bagi
+              kami, namun jika memberi adalah tanda kasih anda, Anda dapat
+              memberi gift.
+            </p>
+
+            <div class="gift-backdrop">
+              <div class="gift-stack">
+                <article class="gift-card">
+                  <p class="gift-card-title">Alamat Rumah</p>
+                  <p class="copy gift-address">
+                    Grand Duta Cluster Dolomite, Blok D No. 3,<br /> 
+                    Gebang Raya, KOTA TANGERANG,<br />
+                    PERIUK, BANTEN, ID, 15132
+                  </p>
+                </article>
+
+                <article class="gift-card">
+                  <p class="gift-card-title">Transfer BCA</p>
+                  <p class="gift-account-name">Septa Abdi Muhammad</p>
+                  <p class="gift-account-number">1080328041</p>
+                </article>
+
+                <article class="gift-card">
+                  <p class="gift-card-title">GoPay</p>
+                  <img
+                    class="gift-qr"
+                    src="assets/images/gopay.png"
+                    alt="QR GoPay Septa Abdy Muhammad"
+                  />
+                </article>
+              </div>
+            </div>
           </div>
-          <p class="gift-address-title">Alamat Rumah</p>
-          <p class="gift-address">
-            Prumahan Grand Duta Cluster Dolomite, Blok D No. 3,<br />
-            Gebang Raya (Blok D6 No 3), KOTA TANGERANG,<br />
-            PERIUK, BANTEN, ID, 15132
-          </p>
-          <img
-            class="gift-flower-top"
-            src="assets/images/b12797b88b56fc6950c26bb3615a0a23.png"
-            alt=""
-            aria-hidden="true"
-          />
-          <p class="gift-account-name">Septa Abdi Muhammad</p>
-          <p class="gift-account-number">1080328041</p>
-          <img
-            class="gift-flower-bottom"
-            src="assets/images/11a015b924fc479de132507f6f4fbc04.png"
-            alt=""
-            aria-hidden="true"
-          />
         </div>
       </section>
 
       <section class="section closing-section">
         <img
-          class="ornament-top"
+          class="ornament"
           src="assets/images/af8786a2983d6510a006e69110f37d17.svg"
           alt=""
           aria-hidden="true"
         />
         <p class="closing-note">
-          Merupakan suatu kehormatan dan kebahagiaan bagi kami<br />
-          apabila Bapak/Ibu/Saudara/i berkenan hadir<br />
-          dan memberikan doa restu.
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
+          Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
         </p>
         <img
-          class="ornament-bottom"
-          src="assets/images/ed6876df8b107b8598afa3838b13fabd.svg"
+          class="ornament"
+          src="assets/images/af8786a2983d6510a006e69110f37d17.svg"
           alt=""
           aria-hidden="true"
         />
       </section>
 
-      <section class="section reservation-section">
-        <iframe
-          class="reservation-frame"
-          src="refference/detail-event_files/index.html"
-          title="Reservasi Buku Tamu"
-          loading="lazy"
-        ></iframe>
+      <section class="section reservation">
+        <div class="reservation-card">
+          <p class="reservation-title">Reservasi</p>
+          <p class="reservation-subtitle">Buku Tamu</p>
+          <p class="copy reservation-copy">
+            Tinggalkan ucapan dan konfirmasi kehadiran Anda melalui form di
+            bawah ini.
+          </p>
+
+          <form class="reservation-form">
+            <div>
+              <label class="field-label" for="guest-name">Nama</label>
+              <input
+                class="field-input"
+                id="guest-name"
+                type="text"
+                placeholder="Masukkan nama Anda"
+              />
+            </div>
+
+            <div>
+              <label class="field-label" for="guest-message">Ucapan</label>
+              <textarea
+                class="field-textarea"
+                id="guest-message"
+                placeholder="Tuliskan ucapan Anda..."
+              ></textarea>
+            </div>
+
+            <div>
+              <span class="field-label">Kehadiran</span>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="attendance" checked />
+                  <span>Hadir</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="attendance" />
+                  <span>Tidak Hadir</span>
+                </label>
+              </div>
+            </div>
+
+            <button class="submit-btn" type="button">Kirim Ucapan</button>
+          </form>
+
+          <p class="reservation-link">
+            Untuk versi interaktif, buka
+            <a href="refference/detail-event_files/index.html" target="_blank"
+              >halaman reservasi</a
+            >.
+          </p>
+        </div>
       </section>
     </main>
   </body>
